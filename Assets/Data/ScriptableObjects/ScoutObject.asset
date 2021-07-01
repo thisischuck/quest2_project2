@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbb6090da633b54db59ef9c0d0e3b04, type: 3}
+  m_Name: ScoutObject
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 8198988507457376725, guid: 23a2368c910d73f4da98285527c5b5ae, type: 3}
+  Speed: 5
+  Hp: 100
+  Defense: 1
+  Layers: {x: 0, y: 0, z: 0}
+  BaseDamage: 5
+  SpeedModifier: 0
