@@ -2,11 +2,10 @@ namespace HelperTypes
 {
     public enum DamageTypes
     {
-        Piercing,
         Fire,
         Water,
         Air,
-        Earth
+        Earth,
     }
 
     //[System.Serializable]
@@ -15,5 +14,12 @@ namespace HelperTypes
         Scout,
         Tank,
         Normal
+    }
+
+    public enum SpellTypes
+    {
+        GroundTrap,
+        WallTrap,
+        Projectile
     }
 }

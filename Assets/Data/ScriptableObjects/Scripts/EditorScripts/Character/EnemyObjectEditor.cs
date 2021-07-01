@@ -38,7 +38,8 @@ public class EnemyObjectEditor : CharacterObjectEditor
 
         #region Movement
         MakeLabel("Movement");
-        SpeedGUI(); SpeedModifierGUI();
+        SpeedGUI();
+        SpeedModifierGUI();
         #endregion
 
         #region Combat
