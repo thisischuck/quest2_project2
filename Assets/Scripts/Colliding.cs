@@ -40,7 +40,6 @@ public class Colliding : MonoBehaviour
             }
         }
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (isChild)

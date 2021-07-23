@@ -706,14 +706,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 638727683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67153831ead524a4c94bc539fd50a118, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df3e9dcf4b9c3c43b72023e19a23bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 492171371}
   t: {fileID: 2100000, guid: f00a1b4e4cc9260478abd2a4400a05cd, type: 2}
   f: {fileID: 2100000, guid: e5bae6dd40578734783a21ffa54d79ba, type: 2}
   s: {fileID: 0}
-  isChild: 0
+  isChild: 1
 --- !u!54 &638727689
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -838,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &883298076
 Transform:
   m_ObjectHideFlags: 0
@@ -900,13 +900,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6925bda06be068f4b8a2cd4378be3b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sData: {fileID: 11400000, guid: dc8e8d3b648dc524190afb011763af15, type: 2}
   meshParent: {fileID: 492171371}
   LeftR: {fileID: 489140504}
   RightR: {fileID: 118284285}
   LeftC: {fileID: 1432546533}
   RightC: {fileID: 2135333230}
-  symbolDraw: 0
-  tolerance: 0.0506
+  symbols: []
+  symbolDraw: 1
+  tolerance: 0.1
 --- !u!1 &1084012574
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,14 +985,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253028572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67153831ead524a4c94bc539fd50a118, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df3e9dcf4b9c3c43b72023e19a23bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 492171371}
   t: {fileID: 2100000, guid: f00a1b4e4cc9260478abd2a4400a05cd, type: 2}
   f: {fileID: 2100000, guid: e5bae6dd40578734783a21ffa54d79ba, type: 2}
   s: {fileID: 0}
-  isChild: 0
+  isChild: 1
 --- !u!65 &1253028574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1396,7 +1398,9 @@ MonoBehaviour:
   t: {fileID: 2100000, guid: f00a1b4e4cc9260478abd2a4400a05cd, type: 2}
   f: {fileID: 2100000, guid: e5bae6dd40578734783a21ffa54d79ba, type: 2}
   s: {fileID: 0}
+  renderer: {fileID: 0}
   isChild: 0
+  ip: {x: 0, y: 0}
 --- !u!65 &1789586043
 BoxCollider:
   m_ObjectHideFlags: 0
