@@ -30,8 +30,9 @@ public class Symbol
         }
     }
 
-    public void CalculateLists()
+    public void CalculateLists(SymbolObject s)
     {
+        sData = s;
         directions = new List<Vector3>();
         distances = new List<float>();
         for (int i = 0; i < vectors.Count; i++)

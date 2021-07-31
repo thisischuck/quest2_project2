@@ -34,7 +34,7 @@ public class SymbolRendering : MonoBehaviour
     {
         symbols = new List<Symbol>();
         sData.symbols.ForEach(
-            s => s.CalculateLists()
+            s => s.CalculateLists(sData)
         );
     }
 

@@ -18,15 +18,25 @@ MonoBehaviour:
     - {x: 0, y: 1, z: 0}
     - {x: 1, y: 1, z: 0}
     - {x: 1, y: 0, z: 0}
-    directions: []
-    distances: []
+    directions:
+    - {x: 0, y: -1, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
+    distances:
+    - 0
+    - 1
+    - 1.4142135
   - vectors:
     - {x: 0, y: 0, z: 0}
     - {x: 1, y: 0, z: 0}
     - {x: 0.5, y: 1, z: 0}
-    directions: []
-    distances: []
-  DistanceValue: 0.5
+    directions:
+    - {x: -1, y: 0, z: 0}
+    - {x: 0.4472136, y: -0.8944272, z: 0}
+    distances:
+    - 0
+    - 1
+  DistanceValue: 0.061
   DirectionValue: 0.5
   StepValue: 4
   DistanceThreshold: 0.5

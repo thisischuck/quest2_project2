@@ -199,7 +199,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -421,7 +421,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -908,6 +908,7 @@ MonoBehaviour:
   RightC: {fileID: 2135333230}
   symbols: []
   symbolDraw: 1
+  rotateSymbol: 0
   tolerance: 0.1
 --- !u!1 &1084012574
 GameObject:
@@ -1394,13 +1395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67153831ead524a4c94bc539fd50a118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 492171371}
-  t: {fileID: 2100000, guid: f00a1b4e4cc9260478abd2a4400a05cd, type: 2}
-  f: {fileID: 2100000, guid: e5bae6dd40578734783a21ffa54d79ba, type: 2}
-  s: {fileID: 0}
-  renderer: {fileID: 0}
-  isChild: 0
-  ip: {x: 0, y: 0}
 --- !u!65 &1789586043
 BoxCollider:
   m_ObjectHideFlags: 0
