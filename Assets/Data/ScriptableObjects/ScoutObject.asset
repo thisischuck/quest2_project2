@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8198988507457376725, guid: 23a2368c910d73f4da98285527c5b5ae, type: 3}
   Speed: 5
-  Hp: 100
+  Hp: 70
   Defense: 1
   Layers: {x: 0, y: 0, z: 0}
+  Type: 0
   BaseDamage: 5
   SpeedModifier: 0
