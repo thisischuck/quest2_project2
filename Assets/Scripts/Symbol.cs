@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [System.Serializable]
 public class Symbol
 {
     SymbolObject sData;
+    public SymbolName Name;
     public List<Vector3> vectors, directions;
     public List<float> distances;
 
@@ -28,6 +28,7 @@ public class Symbol
             }
             vectors.Add(position);
         }
+        Name = new SymbolName(directions, sData.Language);
     }
 
     public void CalculateLists(SymbolObject s)
@@ -45,82 +46,18 @@ public class Symbol
                 directions.Add(Vector3.Normalize(position - vectors[i + 1]));
             }
         }
+        Name = new SymbolName(directions, sData.Language);
     }
 
-    public float Compare(Symbol s, bool rotate)
+    public bool Compare(Symbol s)
     {
-        float dI = 0, dR = 0;
-        int t = sData.StepValue;
-        if (vectors.Count != s.vectors.Count)
-            return -1;
-
-        float rD = CompareDistances(s);
-        if (rotate)
-        {
-            List<Vector2> r = new List<Vector2>();
-            for (int i = 0; i < t; i++)
-            {
-                Quaternion q = Quaternion.Euler(0, i * 360 / t, 0);
-                s.directions.ForEach(v => v = q * v);
-                r.Add(CompareDirections(s));
-            }
-            var fv = Min(r);
-            dR = Mathf.Min(fv.x, fv.y) / sData.DirectionThreshold * sData.DirectionValue;
-        }
-        else
-        {
-            Vector2 r = CompareDirections(s);
-            dR = Mathf.Min(r.x, r.y) / sData.DirectionThreshold * sData.DirectionValue;
-        }
-
-        dI = rD / sData.DistanceThreshold * sData.DistanceValue;
-        HelperFunctions.MyDebug(
-             "direction: " + dR + ", distance:" + dI
-        );
-        return dR + dI;
-        //- Optimal Outcome is 0
+        if (s.Name.value.Equals(Name.value))
+            return true;
+        return false;
     }
 
-    Vector2 Min(List<Vector2> f)
+    public string CalculateName()
     {
-        Vector2 c = new Vector2(1, 1);
-        foreach (var i in f)
-        {
-            c.x = Mathf.Min(c.x, i.x);
-            c.y = Mathf.Min(c.y, i.y); //reflected
-        }
-        return c;
-    }
-
-    float CompareDistances(Symbol s)
-    {
-        float f = 0;
-        for (int i = 0; i < s.distances.Count; i++)
-        {
-            f += CompareDistance(distances[i], s.distances[i]);
-        }
-        return f / distances.Count;
-    }
-
-    float CompareDistance(float n, float m)
-    {
-        return Mathf.Abs(n - m);
-    }
-
-    Vector2 CompareDirections(Symbol s)
-    {
-        float f = 0;
-        float fR = 0;
-        for (int i = 0; i < s.distances.Count; i++)
-        {
-            f += CompareDirection(directions[i], s.directions[i]);
-            fR += CompareDirection(directions[i], Vector3.Reflect(s.directions[i], Vector3.up));
-        }
-        return new Vector2(f / distances.Count, fR / distances.Count);
-    }
-
-    float CompareDirection(Vector3 v, Vector3 u)
-    {
-        return Vector3.Angle(v, u);
+        return "";
     }
 }

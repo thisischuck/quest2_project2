@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SymbolObject", menuName = "Data/Symbol")]
 public class SymbolObject : ScriptableObject
 {
+    public SymbolLanguage Language;
+
     public List<Symbol> symbols;
 
     [Range(0, 1)]
@@ -17,4 +19,6 @@ public class SymbolObject : ScriptableObject
     public float DistanceThreshold;
     [Tooltip("Angle in Degrees")]
     public float DirectionThreshold;
+
+    public bool SaveMe = false;
 }

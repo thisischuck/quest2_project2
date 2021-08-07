@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class SymbolRendering : MonoBehaviour
 {
@@ -13,8 +14,6 @@ public class SymbolRendering : MonoBehaviour
 
     public GameObject LeftC;
     public GameObject RightC;
-
-    public List<Symbol> symbols;
 
     public bool symbolDraw;
     public bool rotateSymbol;
@@ -32,10 +31,17 @@ public class SymbolRendering : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        symbols = new List<Symbol>();
-        sData.symbols.ForEach(
-            s => s.CalculateLists(sData)
-        );
+        if (sData.SaveMe)
+        {
+            sData.Language = new SymbolLanguage(sData.StepValue);
+            sData.symbols.ForEach(
+                s => s.CalculateLists(sData)
+            );
+            EditorUtility.SetDirty(sData);
+            sData.SaveMe = false;
+        }
+
+        sData.Language.ReadLanguage();
     }
 
     void Draw(Transform t, LineRenderer r)
@@ -45,24 +51,22 @@ public class SymbolRendering : MonoBehaviour
         r.SetPosition(a, tmp);
     }
 
-    float SymbolExists(Symbol s)
+    bool SymbolExists(Symbol s)
     {
-        float v = 0;
         foreach (Symbol i in sData.symbols)
         {
-            v = i.Compare(s, rotateSymbol);
+            if (i.Compare(s))
+                return true;
         }
-
-        if (v != 0)
-            Debug.Log(v);
-        return v;
+        return false;
     }
 
-    void BakeSymbolMesh(LineRenderer r)
+    void BakeSymbolMesh(LineRenderer r, string name)
     {
         Mesh m = new Mesh();
         r.BakeMesh(m, true);
         var g = new GameObject("Mesh");
+        g.name = name;
         g.transform.parent = meshParent;
         g.AddComponent<MeshFilter>().mesh = m;
         g.AddComponent<MeshRenderer>();
@@ -72,8 +76,9 @@ public class SymbolRendering : MonoBehaviour
     {
         r.Simplify(tolerance);
         Symbol s = new Symbol(r, sData);
+
         SymbolExists(s);
-        BakeSymbolMesh(r);
+        BakeSymbolMesh(r, s.Name.value);
         r.positionCount = 0;
     }
 

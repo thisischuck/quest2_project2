@@ -12,32 +12,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e48afbd60cea224a9da97428cc94962, type: 3}
   m_Name: SymbolObject
   m_EditorClassIdentifier: 
+  Language:
+    name: '!"#$%&''()*+,-./0123456789:'
+    FirstValue: 33
+    _keys:
+    - {x: -1, y: -1, z: -1}
+    - {x: 0, y: -1, z: -1}
+    - {x: 1, y: -1, z: -1}
+    - {x: -1, y: 0, z: -1}
+    - {x: 0, y: 0, z: -1}
+    - {x: 1, y: 0, z: -1}
+    - {x: -1, y: 1, z: -1}
+    - {x: 0, y: 1, z: -1}
+    - {x: 1, y: 1, z: -1}
+    - {x: -1, y: -1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    - {x: 1, y: -1, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: 1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 1, z: 0}
+    - {x: -1, y: -1, z: 1}
+    - {x: 0, y: -1, z: 1}
+    - {x: 1, y: -1, z: 1}
+    - {x: -1, y: 0, z: 1}
+    - {x: 0, y: 0, z: 1}
+    - {x: 1, y: 0, z: 1}
+    - {x: -1, y: 1, z: 1}
+    - {x: 0, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    _values: 2100220023002400250026002700280029002a002b002c002d002e002f0030003100320033003400350036003700380039003a00
   symbols:
-  - vectors:
+  - Name:
+      value: +-0.
+    vectors:
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 1, z: 0}
     - {x: 1, y: 1, z: 0}
     - {x: 1, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
     directions:
     - {x: 0, y: -1, z: 0}
     - {x: -1, y: 0, z: 0}
     - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 0, z: 0}
     distances:
     - 0
     - 1
     - 1.4142135
-  - vectors:
+    - 1
+  - Name:
+      value: -,1
+    vectors:
     - {x: 0, y: 0, z: 0}
     - {x: 1, y: 0, z: 0}
     - {x: 0.5, y: 1, z: 0}
+    - {x: 0, y: 0, z: 0}
     directions:
     - {x: -1, y: 0, z: 0}
     - {x: 0.4472136, y: -0.8944272, z: 0}
+    - {x: 0.4472136, y: 0.8944272, z: 0}
     distances:
     - 0
     - 1
+    - 1.118034
   DistanceValue: 0.061
   DirectionValue: 0.5
-  StepValue: 4
+  StepValue: 2
   DistanceThreshold: 0.5
   DirectionThreshold: 30
+  SaveMe: 0
