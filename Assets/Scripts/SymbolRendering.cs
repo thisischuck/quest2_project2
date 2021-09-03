@@ -41,7 +41,7 @@ public class SymbolRendering : MonoBehaviour
             sData.SaveMe = false;
         }
 
-        sData.Language.ReadLanguage();
+        //sData.Language.ReadLanguage();
     }
 
     void Draw(Transform t, LineRenderer r)
@@ -55,7 +55,7 @@ public class SymbolRendering : MonoBehaviour
     {
         foreach (Symbol i in sData.symbols)
         {
-            if (i.Compare(s))
+            if (i.Compare(s) == 0)
                 return true;
         }
         return false;
@@ -65,8 +65,7 @@ public class SymbolRendering : MonoBehaviour
     {
         Mesh m = new Mesh();
         r.BakeMesh(m, true);
-        var g = new GameObject("Mesh");
-        g.name = name;
+        var g = new GameObject(name);
         g.transform.parent = meshParent;
         g.AddComponent<MeshFilter>().mesh = m;
         g.AddComponent<MeshRenderer>();
@@ -85,7 +84,7 @@ public class SymbolRendering : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OVRInput.Update();
+        HelperFunctions.UpdateOVR();
 
         if (symbolDraw)
         {

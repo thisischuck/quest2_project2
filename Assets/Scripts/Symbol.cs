@@ -49,11 +49,48 @@ public class Symbol
         Name = new SymbolName(directions, sData.Language);
     }
 
-    public bool Compare(Symbol s)
+    public float Compare(Symbol s)
     {
         if (s.Name.value.Equals(Name.value))
-            return true;
-        return false;
+            return 1;
+
+        float d = 0;
+
+        //need to check if it's close to another thing
+        if (s.Name.value.Length == Name.value.Length)
+        {
+            float keyValue = 1 / Name.value.Length;
+            for (int i = 0; i < Name.value.Length; i++)
+            {
+                char a = s.Name.value[i];
+                char b = Name.value[i];
+                if (a == b)
+                {
+                    d += keyValue;
+                }
+                else
+                {
+                    float xyzValue = keyValue / 3;
+
+                    Vector3 result = new Vector3(
+                        Mathf.Abs(s.directions[i].x - directions[i].x),
+                        Mathf.Abs(s.directions[i].y - directions[i].y),
+                        Mathf.Abs(s.directions[i].z - directions[i].z)
+                    );
+
+
+                    d += xyzValue * f(result.x);
+                    d += xyzValue * f(result.y);
+                    d += xyzValue * f(result.z);
+                }
+            }
+        }
+        return d;
+    }
+
+    float f(float v)
+    {
+        return -(v / 2) + 1;
     }
 
     public string CalculateName()

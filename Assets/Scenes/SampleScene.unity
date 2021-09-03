@@ -906,7 +906,6 @@ MonoBehaviour:
   RightR: {fileID: 118284285}
   LeftC: {fileID: 1432546533}
   RightC: {fileID: 2135333230}
-  symbols: []
   symbolDraw: 1
   rotateSymbol: 0
   tolerance: 0.1
