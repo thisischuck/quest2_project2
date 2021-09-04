@@ -91,7 +91,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8198988507457376725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e149d71fb8b307e4dbe8e80537ab730a, type: 3}
+  m_Script: {fileID: 11500000, guid: 481bae854a792974c9ffaf980ad3f91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scout: {fileID: 11400000, guid: 6c77437dbe49daa4dbe798919f480b4e, type: 2}
+  enemyObject: {fileID: 11400000, guid: cfa803a5f0f4bf54cb1f38e1013198c3, type: 2}
+  target: {fileID: 0}

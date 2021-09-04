@@ -11,7 +11,6 @@ public class SpawnerObject : ScriptableObject
     public float spawnRate;
     public EnemyTypes enemyType;
     public UnityAction<EnemyTypes> spawnAction;
-
     void OnEnable()
     {
     }

@@ -5,42 +5,56 @@ using HelperTypes;
 
 public class Spawner : MonoBehaviour
 {
-    public SpawnerObject sp;
-
-    public GameObject ScoutPrefab;
-    public GameObject NormalPrefab;
-    public GameObject TankPrefab;
-    // Start is called before the first frame update
-    void Start()
+    public enum SpawnerPosition
     {
-        sp.spawnAction += Spawn;
+        Center,
+        Sides
+    }
+    public SpawnerPosition type;
+    float rate;
+    public bool spawned;
+    [Space]
+    public GameObject Scout;
+    public GameObject Zerg;
+    public GameObject Tank;
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (spawned)
+        {
+            if (rate < 0)
+                spawned = false;
+            else
+                rate -= Time.deltaTime;
+        }
     }
 
-    Vector3 CalculatePosition()
+    public float Rate
     {
-        return Vector3.zero;
-    }
-
-    IEnumerator AutoSpawn()
-    {
-        yield return new WaitForSecondsRealtime(sp.spawnRate);
-        Spawn(sp.enemyType);
+        get { return rate; }
+        set { rate = value; }
     }
 
     // Update is called once per frame
-    void Spawn(EnemyTypes en)
+    public GameObject Spawn(EnemyTypes en)
     {
+        spawned = true;
+        GameObject g = null;
         switch (en)
         {
             case EnemyTypes.Normal:
-                Instantiate(NormalPrefab, CalculatePosition(), transform.rotation, transform);
+                g = Instantiate(Zerg, transform.position, transform.rotation, transform);
                 break;
             case EnemyTypes.Scout:
-                Instantiate(ScoutPrefab, CalculatePosition(), transform.rotation, transform);
+                g = Instantiate(Scout, transform.position, transform.rotation, transform);
                 break;
             case EnemyTypes.Tank:
-                Instantiate(TankPrefab, CalculatePosition(), transform.rotation, transform);
+                g = Instantiate(Tank, transform.position, transform.rotation, transform);
                 break;
         }
+        return g;
     }
 }

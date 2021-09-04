@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb6090da633b54db59ef9c0d0e3b04, type: 3}
   m_Name: ScoutObject
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8198988507457376725, guid: 23a2368c910d73f4da98285527c5b5ae, type: 3}
+  Prefab: {fileID: 5989051657071548172, guid: 54add764699796d4eafbeb2c0c678302, type: 3}
   Speed: 5
-  Hp: 70
+  Hp: 30
   Defense: 1
   Layers: {x: 0, y: 0, z: 0}
   Type: 0
