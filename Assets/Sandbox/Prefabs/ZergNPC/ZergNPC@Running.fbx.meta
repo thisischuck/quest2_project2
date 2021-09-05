@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: abfa824d5d3da0b4ab1ac97e3004b0c5
+guid: af7eea37a84fc8848bafdca390ac6aa2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Driving
-  externalObjects: {}
+    second: Zerg@Running
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: cdd5d341af5213d47ab4429f61063d8a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,11 +40,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Driving
+      name: Zerg@Running
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 150
+      lastFrame: 27
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
