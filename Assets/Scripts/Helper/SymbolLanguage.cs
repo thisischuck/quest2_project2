@@ -91,6 +91,13 @@ public class SymbolLanguage : ISerializationCallbackReceiver
                             if (uz == 0)
                                 continue;
 
+                    if (ux == 0 && uy == 0 && (int)(uz / d) == 0)
+                        continue;
+                    if (uy == 0 && uz == 0 && (int)(ux / d) == 0)
+                        continue;
+                    if (uz == 0 && ux == 0 && (int)(uy / d) == 0)
+                        continue;
+
                     Vector3 key = new Vector3(
                         ux / d,
                         uy / d,

@@ -24,7 +24,7 @@ public class Symbol
             {
                 //distances[i] = Vector3.Distance(position, r.GetPosition(i + 1));
                 distances.Add(Vector3.Distance(position, Vector3.zero)); //distance from the center
-                directions.Add(Vector3.Normalize(position - r.GetPosition(i + 1)));
+                directions.Add(Vector3.Normalize(r.GetPosition(i + 1) - position));
             }
             vectors.Add(position);
         }
@@ -43,7 +43,7 @@ public class Symbol
             {
                 //distances[i] = Vector3.Distance(position, r.GetPosition(i + 1));
                 distances.Add(Vector3.Distance(position, Vector3.zero)); //distance from the center
-                directions.Add(Vector3.Normalize(position - vectors[i + 1]));
+                directions.Add(Vector3.Normalize(vectors[i + 1] - position));
             }
         }
         Name = new SymbolName(directions, sData.Language);
