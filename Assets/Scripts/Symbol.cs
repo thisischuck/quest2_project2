@@ -62,8 +62,8 @@ public class Symbol
             float keyValue = 1 / Name.value.Length;
             for (int i = 0; i < Name.value.Length; i++)
             {
-                char a = s.Name.value[i];
-                char b = Name.value[i];
+                int a = int.Parse(s.Name.value.Split(',')[i]);
+                int b = int.Parse(Name.value.Split(',')[i]);
                 if (a == b)
                 {
                     d += keyValue;

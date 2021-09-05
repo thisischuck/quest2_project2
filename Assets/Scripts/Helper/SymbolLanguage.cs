@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HelperTypes;
 
 [System.Serializable]
 public class SymbolName
@@ -13,30 +14,30 @@ public class SymbolName
         CalculateName(lang.Language, dir);
     }
 
-    void CalculateName(Dictionary<Vector3, char> lang, List<Vector3> dir)
+    void CalculateName(Dictionary<Vector3, int> lang, List<Vector3> dir)
     {
         value = "";
         foreach (var d in dir)
         {
             if (lang.ContainsKey(d))
             {
-                value += lang[d];
+                value += lang[d] + ",";
                 continue;
             }
 
             float min = 180;
-            char c = (char)0;
+            int? c = null;
             foreach (var kv in lang)
             {
                 float a = Vector3.Angle(d, kv.Key);
-
                 if (a < min)
                 {
+                    HelperFunctions.MyDebug($"angle:{a} cMin:{min}\ndir:{d} key:{kv.Key}");
                     min = a;
                     c = kv.Value;
                 }
             }
-            value += c;
+            value += c + ",";
         }
     }
 
@@ -50,17 +51,19 @@ public class SymbolName
 public class SymbolLanguage : ISerializationCallbackReceiver
 {
     public string name = "";
-    public char FirstValue = (char)33;
-    public Dictionary<Vector3, char> Language = new Dictionary<Vector3, char>();
+    public int FirstValue = 0;
+    public Dictionary<Vector3, int> Language;
+    public Dictionary<int, Vector3> LanguageRev;
 
     public SymbolLanguage(int stepNumber)
     {
-        Language = new Dictionary<Vector3, char>();
+        Language = new Dictionary<Vector3, int>();
+        LanguageRev = new Dictionary<int, Vector3>();
         CreateLanguage(stepNumber);
 
         foreach (var k in Language)
         {
-            name += k.Value;
+            name += k.Value + ",";
         }
     }
 
@@ -97,7 +100,8 @@ public class SymbolLanguage : ISerializationCallbackReceiver
 
                     if (!Language.ContainsKey(key))
                     {
-                        Language.Add(key, (char)(FirstValue + count));
+                        Language.Add(key, count);
+                        LanguageRev.Add(count, key);
                         count++;
                     }
                 }
@@ -106,7 +110,7 @@ public class SymbolLanguage : ISerializationCallbackReceiver
     }
 
     public List<Vector3> _keys = new List<Vector3>();
-    public List<char> _values = new List<char>();
+    public List<int> _values = new List<int>();
 
     public void OnBeforeSerialize()
     {
@@ -122,10 +126,15 @@ public class SymbolLanguage : ISerializationCallbackReceiver
 
     public void OnAfterDeserialize()
     {
-        Language = new Dictionary<Vector3, char>();
+        Language = new Dictionary<Vector3, int>();
+        LanguageRev = new Dictionary<int, Vector3>();
 
         for (int i = 0; i != Mathf.Min(_keys.Count, _values.Count); i++)
+        {
             Language.Add(_keys[i], _values[i]);
+            LanguageRev.Add(_values[i], _keys[i]);
+
+        }
     }
 
     void OnGUI()

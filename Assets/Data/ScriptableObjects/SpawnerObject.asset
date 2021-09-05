@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpawnerObject
   m_EditorClassIdentifier: 
   spawnRate: 5000000
-  enemyType: 2
+  enemyType: 0

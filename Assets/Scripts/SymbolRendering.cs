@@ -8,6 +8,7 @@ public class SymbolRendering : MonoBehaviour
 {
     public SymbolObject sData;
     public Transform meshParent;
+    public Material meshMaterial;
 
     public LineRenderer LeftR;
     public LineRenderer RightR;
@@ -48,6 +49,7 @@ public class SymbolRendering : MonoBehaviour
     {
         int a = r.positionCount++;
         var tmp = t.position;
+        tmp.z = 0;
         r.SetPosition(a, tmp);
     }
 
@@ -61,14 +63,28 @@ public class SymbolRendering : MonoBehaviour
         return false;
     }
 
-    void BakeSymbolMesh(LineRenderer r, string name)
+    void BakeSymbolMesh(LineRenderer r, string name, bool t)
     {
         Mesh m = new Mesh();
+        if (t)
+        {
+            r.positionCount = 0;
+            foreach (var c in name)
+            {
+                int a = r.positionCount++;
+                if (sData.Language.Language.ContainsValue(c))
+                {
+                    r.SetPosition(a, sData.Language.LanguageRev[c]);
+                }
+            }
+        }
+
         r.BakeMesh(m, true);
         var g = new GameObject(name);
         g.transform.parent = meshParent;
         g.AddComponent<MeshFilter>().mesh = m;
-        g.AddComponent<MeshRenderer>();
+        var s = g.AddComponent<MeshRenderer>();
+        s.material = meshMaterial;
     }
 
     void ResetRenderers(LineRenderer r)
@@ -76,8 +92,10 @@ public class SymbolRendering : MonoBehaviour
         r.Simplify(tolerance);
         Symbol s = new Symbol(r, sData);
 
-        SymbolExists(s);
-        BakeSymbolMesh(r, s.Name.value);
+        //SymbolExists(s);
+
+        BakeSymbolMesh(r, s.Name.value + " WithoutParser", false);
+        BakeSymbolMesh(r, s.Name.value, true);
         r.positionCount = 0;
     }
 
@@ -91,11 +109,11 @@ public class SymbolRendering : MonoBehaviour
             Vector2 ip = HelperFunctions.TrackControllerInput();
             if (ip.x > 0.5)
                 Draw(LeftC.transform, LeftR);
-            else if (LeftR.positionCount > 0)
+            else if (LeftR.positionCount > 0 && LeftR.positionCount != 0)
                 ResetRenderers(LeftR);
             if (ip.y > 0.5)
                 Draw(RightC.transform, RightR);
-            else if (RightR.positionCount > 0)
+            else if (RightR.positionCount > 0 && RightR.positionCount != 0)
                 ResetRenderers(RightR);
         }
 
