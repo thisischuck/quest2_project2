@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using HelperTypes;
 
@@ -50,8 +51,7 @@ public class SymbolName
 [System.Serializable]
 public class SymbolLanguage : ISerializationCallbackReceiver
 {
-    public string name = "";
-    public int FirstValue = 0;
+    float pi = 3.14f;
     public Dictionary<Vector3, int> Language;
     public Dictionary<int, Vector3> LanguageRev;
 
@@ -60,11 +60,6 @@ public class SymbolLanguage : ISerializationCallbackReceiver
         Language = new Dictionary<Vector3, int>();
         LanguageRev = new Dictionary<int, Vector3>();
         CreateLanguage(stepNumber);
-
-        foreach (var k in Language)
-        {
-            name += k.Value + ",";
-        }
     }
 
     public void ReadLanguage()
@@ -75,43 +70,38 @@ public class SymbolLanguage : ISerializationCallbackReceiver
         }
     }
 
+    float Round(float f)
+    {
+        return Mathf.Round(f * 10.0f) * 0.1f;
+    }
+
     int CreateLanguage(int stepNumber = 4)
     {
         int count = 0;
-        float d = stepNumber / 2;
-        for (int z = 0; z <= stepNumber; z++)
-            for (int y = 0; y <= stepNumber; y++)
-                for (int x = 0; x <= stepNumber; x++)
+        float step = pi / stepNumber;
+        for (float phi = 0; phi < 2 * pi; phi += step)
+            for (float theta = 0; theta <= pi; theta += step)
+            {
+                float x = Mathf.Cos(phi) * Mathf.Sin(theta);
+                float y = Mathf.Sin(phi) * Mathf.Sin(theta);
+                float z = Mathf.Cos(theta);
+
+                Vector3 key = new Vector3(
+                    Round(x),
+                    Round(y),
+                    Round(z)
+                );
+
+                key.Normalize();
+                Debug.DrawLine(Vector3.zero, 10 * key, Color.black, 100000);
+
+                if (!Language.ContainsKey(key))
                 {
-                    int ux = x - (int)d;
-                    int uy = y - (int)d;
-                    int uz = z - (int)d;
-                    if (ux == 0)
-                        if (uy == 0)
-                            if (uz == 0)
-                                continue;
-
-                    if (ux == 0 && uy == 0 && (int)(uz / d) == 0)
-                        continue;
-                    if (uy == 0 && uz == 0 && (int)(ux / d) == 0)
-                        continue;
-                    if (uz == 0 && ux == 0 && (int)(uy / d) == 0)
-                        continue;
-
-                    Vector3 key = new Vector3(
-                        ux / d,
-                        uy / d,
-                        uz / d
-                    );
-                    Debug.DrawLine(Vector3.zero, key, Color.black, 1f);
-
-                    if (!Language.ContainsKey(key))
-                    {
-                        Language.Add(key, count);
-                        LanguageRev.Add(count, key);
-                        count++;
-                    }
+                    Language.Add(key, count);
+                    LanguageRev.Add(count, key);
+                    count++;
                 }
+            }
 
         return count;
     }
