@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb6090da633b54db59ef9c0d0e3b04, type: 3}
   m_Name: TankObject
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8198988507457376725, guid: 38add8c8034239547b5e402dd52bc87b, type: 3}
-  Speed: 5
+  Prefab: {fileID: 763779667670507322, guid: ae5de64c374020e48a285cc9077fe7de, type: 3}
+  Speed: 2
   Hp: 100
   Defense: 10
   Layers: {x: 0, y: 0, z: 0}
   Type: 1
   BaseDamage: 5
   SpeedModifier: 0
+  Knockback: 1

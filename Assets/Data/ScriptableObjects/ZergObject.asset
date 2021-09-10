@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: ZergObject
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4359995183636742571, guid: 001a3603b1b5a7344903126764c87045, type: 3}
-  Speed: 1
+  Speed: 3
   Hp: 50
-  Defense: 0
+  Defense: 10
   Layers: {x: 0, y: 0, z: 0}
   Type: 2
-  BaseDamage: 1
+  BaseDamage: 5
   SpeedModifier: 0
+  Knockback: 5
