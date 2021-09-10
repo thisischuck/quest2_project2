@@ -7,7 +7,7 @@ public class ShootingController : MonoBehaviour
 {
     public bool isLeft;
     bool shot;
-    public int cooldown;
+    public float cooldown;
     public GameObject shootPrefab;
 
     // Update is called once per frame

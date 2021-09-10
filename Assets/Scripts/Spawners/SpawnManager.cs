@@ -34,6 +34,23 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (q.Count == 0 && q.Count < 15)
+        {
+            int rnd = Random.Range(0, 3);
+            switch (rnd)
+            {
+                case 0:
+                    q.Enqueue(EnemyTypes.Normal);
+                    break;
+                case 1:
+                    q.Enqueue(EnemyTypes.Scout);
+                    break;
+                case 2:
+                    q.Enqueue(EnemyTypes.Tank);
+                    break;
+            }
+        }
+
         spawnerList.ForEach(s =>
         {
             if (q.Count > 0)

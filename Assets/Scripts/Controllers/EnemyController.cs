@@ -35,6 +35,9 @@ public class EnemyController : MonoBehaviour
             if (Vector3.Distance(transform.position, target) < 1)
                 move = false;
         }
+
+        if (hp <= 0)
+            Destroy(this.gameObject);
         //hp = scout.CalculateDamageToSelf(hp, 10, Fire, scout.Type);
     }
 
@@ -50,6 +53,7 @@ public class EnemyController : MonoBehaviour
             move = true;
             Vector3 dir = other.gameObject.GetComponent<MoveFoward>().direction;
             target = transform.position + dir * enemyObject.Knockback;
+            hp -= 10;
             Destroy(other.gameObject);
         }
     }

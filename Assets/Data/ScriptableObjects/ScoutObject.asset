@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5989051657071548172, guid: 54add764699796d4eafbeb2c0c678302, type: 3}
   Speed: 10
-  Hp: 30
+  Hp: 10
   Defense: 1
   Layers: {x: 0, y: 0, z: 0}
   Type: 0
