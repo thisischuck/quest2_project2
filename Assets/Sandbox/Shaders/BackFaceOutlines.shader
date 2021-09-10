@@ -49,7 +49,7 @@ Shader "Outlines/BackFaceOutlines" {
             #pragma fragment Fragment
 
             // Include our logic file
-            #include "C:\Users\PC-002\Desktop\Projeto Integrado 2\quest2_project2\Assets\Sandbox\Shaders\Includes\BackFaceOutlines.hlsl"    
+            #include "Assets\Sandbox\Shaders\Includes\BackFaceOutlines.hlsl"    
 
             ENDHLSL
         }
