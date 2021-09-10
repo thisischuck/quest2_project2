@@ -49,6 +49,8 @@ public class Symbol
         Name = new SymbolName(directions, sData.Language);
     }
 
+
+    //this function is fucked
     public float Compare(Symbol s)
     {
         if (s.Name.value.Equals(Name.value))
@@ -59,11 +61,17 @@ public class Symbol
         //need to check if it's close to another thing
         if (s.Name.value.Length == Name.value.Length)
         {
-            float keyValue = 1 / Name.value.Length;
-            for (int i = 0; i < Name.value.Length; i++)
+            float l = Mathf.Max(s.Name.value.Length, Name.value.Length);
+            float min = Mathf.Min(s.Name.value.Length, Name.value.Length);
+
+            var sname = s.Name.value.Split(',');
+            var name = Name.value.Split(',');
+
+            float keyValue = 1 / l;
+            for (int i = 0; i < min; i++)
             {
-                int a = int.Parse(s.Name.value.Split(',')[i]);
-                int b = int.Parse(Name.value.Split(',')[i]);
+                int a = int.Parse(sname[i]);
+                int b = int.Parse(name[i]);
                 if (a == b)
                 {
                     d += keyValue;
@@ -79,16 +87,16 @@ public class Symbol
                     );
 
 
-                    d += xyzValue * f(result.x);
-                    d += xyzValue * f(result.y);
-                    d += xyzValue * f(result.z);
+                    d += xyzValue * fun(result.x);
+                    d += xyzValue * fun(result.y);
+                    d += xyzValue * fun(result.z);
                 }
             }
         }
         return d;
     }
 
-    float f(float v)
+    float fun(float v)
     {
         return -(v / 2) + 1;
     }

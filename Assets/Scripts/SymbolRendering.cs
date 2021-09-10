@@ -17,11 +17,14 @@ public class SymbolRendering : MonoBehaviour
     public GameObject RightC;
 
     public bool symbolDraw;
+    public bool symbolSave;
     public bool rotateSymbol;
+
 
     [Range(0.01f, 0.1f)]
     public float tolerance;
 
+    public GameObject spell;
     bool IndexButton(bool isLeft)
     {
         if (isLeft)
@@ -49,7 +52,7 @@ public class SymbolRendering : MonoBehaviour
     {
         int a = r.positionCount++;
         var tmp = t.position;
-        tmp.z = 0;
+        // tmp.z = 0;
         r.SetPosition(a, tmp);
     }
 
@@ -57,7 +60,9 @@ public class SymbolRendering : MonoBehaviour
     {
         foreach (Symbol i in sData.symbols)
         {
-            if (i.Compare(s) == 0)
+            float f = i.Compare(s);
+            HelperFunctions.MyDebug(f.ToString());
+            if (f > sData.SuccessPercentage)
                 return true;
         }
         return false;
@@ -92,11 +97,24 @@ public class SymbolRendering : MonoBehaviour
         r.Simplify(tolerance);
         Symbol s = new Symbol(r, sData);
 
-        //SymbolExists(s);
+        if (symbolSave)
+        {
+            sData.symbols.Add(s);
+            EditorUtility.SetDirty(sData);
+        }
+        else if (SymbolExists(s))
+        {
+            SpawnSpell(r);
+        }
 
         BakeSymbolMesh(r, s.Name.value + " WithoutParser", false);
         BakeSymbolMesh(r, s.Name.value, true);
         r.positionCount = 0;
+    }
+
+    void SpawnSpell(LineRenderer r)
+    {
+        Instantiate(spell, r.transform.position, r.transform.rotation);
     }
 
     // Update is called once per frame

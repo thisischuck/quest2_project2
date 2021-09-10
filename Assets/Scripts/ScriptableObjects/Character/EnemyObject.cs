@@ -11,6 +11,7 @@ public class EnemyObject : CharacterObject
     public int BaseDamage;
     [Range(0.1f, 5f)]
     public float SpeedModifier;
+    public float Knockback;
 
 
     public int CalculateDamageToSelf(int currentHp, int incoming, DamageTypes t, EnemyTypes eT)

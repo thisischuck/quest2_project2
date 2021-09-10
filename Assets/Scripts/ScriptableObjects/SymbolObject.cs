@@ -15,6 +15,8 @@ public class SymbolObject : ScriptableObject
     public float DirectionValue;
 
     public int StepValue;
+    [Range(0, 1)]
+    public float SuccessPercentage;
 
     public float DistanceThreshold;
     [Tooltip("Angle in Degrees")]

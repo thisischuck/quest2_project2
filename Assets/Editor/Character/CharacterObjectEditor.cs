@@ -9,6 +9,7 @@ public class CharacterObjectEditor : Editor
     SerializedProperty Speed;
     SerializedProperty Hp;
     SerializedProperty Layers;
+    SerializedProperty Knockback;
 
 
     SerializedProperty Prefab;
@@ -25,6 +26,7 @@ public class CharacterObjectEditor : Editor
         Hp = FindProperty("Hp");
         Speed = FindProperty("Speed");
         Layers = FindProperty("Layers");
+        Knockback = FindProperty("Knockback");
     }
 
     public override bool HasPreviewGUI() { return true; }
@@ -52,6 +54,10 @@ public class CharacterObjectEditor : Editor
     public void DefenseGUI()
     {
         PropertyField(Defense);
+    }
+    public void KnockbackGUI()
+    {
+        PropertyField(Knockback);
     }
     public void SpeedGUI()
     {

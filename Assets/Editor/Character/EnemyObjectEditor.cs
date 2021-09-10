@@ -40,6 +40,7 @@ public class EnemyObjectEditor : CharacterObjectEditor
         MakeLabel("Movement");
         SpeedGUI();
         SpeedModifierGUI();
+        KnockbackGUI();
         #endregion
 
         #region Combat

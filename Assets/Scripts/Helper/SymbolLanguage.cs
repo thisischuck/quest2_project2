@@ -33,7 +33,7 @@ public class SymbolName
                 float a = Vector3.Angle(d, kv.Key);
                 if (a < min)
                 {
-                    HelperFunctions.MyDebug($"angle:{a} cMin:{min}\ndir:{d} key:{kv.Key}");
+                    //HelperFunctions.MyDebug($"angle:{a} cMin:{min}\ndir:{d} key:{kv.Key}");
                     min = a;
                     c = kv.Value;
                 }
