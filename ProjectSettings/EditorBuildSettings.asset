@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Sandbox/Scenes/Levels/SplashScreenScene.unity
+    guid: ae5eb1616c927384a944b4bdec3d8a33
+  - enabled: 1
+    path: Assets/Sandbox/Scenes/Levels/Map000Scene.unity
+    guid: 1dc638803ad96a04da9827c27dbd6762
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

@@ -14,10 +14,10 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Outlined
+  - OutlinedHigh
   - IgnoreLight
-  - OutlinedNPC
-  - 
+  - OutlinedLow
+  - PostProcessing
   - 
   - 
   - 
