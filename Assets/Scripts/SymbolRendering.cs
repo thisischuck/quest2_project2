@@ -35,7 +35,7 @@ public class SymbolRendering : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (sData.SaveMe)
+        /*if (sData.SaveMe)
         {
             sData.Language = new SymbolLanguage(sData.StepValue);
             sData.symbols.ForEach(
@@ -43,7 +43,7 @@ public class SymbolRendering : MonoBehaviour
             );
             EditorUtility.SetDirty(sData);
             sData.SaveMe = false;
-        }
+        }*/
 
         //sData.Language.ReadLanguage();
     }
@@ -100,7 +100,7 @@ public class SymbolRendering : MonoBehaviour
         if (symbolSave)
         {
             sData.symbols.Add(s);
-            EditorUtility.SetDirty(sData);
+            //EditorUtility.SetDirty(sData);
         }
         else if (SymbolExists(s))
         {
